@@ -1,0 +1,96 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    background: -webkit-linear-gradient(left, #003366,#004080,#0059b3, #0073e6);
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    opacity:0;
+    animation:fadeIn 0.7s forwards;
+}
+
+.auth-link{
+    transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+    color: #084298;
+    text-decoration: underline;
+    transform: translateY(-1px);
+}
+
+.card{
+    transition:all 0.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.btn{
+    transition:all 0.3s ease;
+}
+
+.btn:hover{
+    transform:scale(1.03);
+}
+
+a{
+    text-decoration:none;
+}
+
+.toggle-password{
+    position:absolute;
+    right:12px;
+    top:38px;
+    cursor:pointer;
+    color:#666;
+}
+
+.toggle-password:hover{
+    color:#000;
+}
+
+small{
+    font-size:13px;
+}
+
+.navbar {
+    background: linear-gradient(to right, #00264d, #0059b3);
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode .card{
+    background:#f5bc03e8;
+    color:white;
+}
+
+.dark-mode .navbar{
+    background:#000000 !important;
+}
+
+.dark-mode a{
+    color:#dddddd;
+}
+
+body{
+    opacity:0;
+    animation:fadeIn 0.7s forwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+}
+    to{
+        opacity:1;
+        transform:translateY(0);
+}
+}
