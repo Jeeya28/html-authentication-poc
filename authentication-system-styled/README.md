@@ -24,7 +24,7 @@ It includes multiple pages for user authentication with modern UI design and int
 ---
 
 ## 💡 UI Features
-- Responsive design (mobile, tablet, desktop)
+- Responsive design (mobile, tablet, desktop, laptop)
 - Password visibility toggle
 - Password strength indicator
 - Loading spinner on buttons
