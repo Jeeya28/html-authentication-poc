@@ -14,10 +14,19 @@
 </head>
 
 <body>
+    
     <div class="container min-vh-100 d-flex justify-content-center align-items-center py-4">
-        <div class="row w-100 justify-content-center">
-            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
-                <div class="card p-4 shadow-lg auth-card">
+        <div class="card shadow auth-card overflow-hidden" style="max-width: 900px; width: 100%;">
+            <div class="row g-0">
+                <!-- IMAGE -->
+                <div class="col-md-6 d-none d-md-block">
+                    <img src="https://img.freepik.com/free-vector/login-concept-illustration_114360-757.jpg"
+                         class="img-fluid h-100 w-100 object-fit-cover"
+                         alt="image">
+                </div>
+
+                <!-- FORM -->
+                <div class="col-md-6 p-4">
                     <h3 class="text-center mb-3">Create Account</h3>
                     <form action="index.html">
                         <div class="mb-3">
@@ -129,34 +138,33 @@
             const matchText = document.getElementById("matchText");
 
             confirmPass.addEventListener("input", () => {
-            if (confirmPass.value === password.value) {
-                matchText.innerText = "Passwords match";
-                matchText.style.color = "green";
-            } else {
-                matchText.innerText = "Passwords do not match";
-                matchText.style.color = "red";
-            }
+                if (confirmPass.value === password.value) {
+                    matchText.innerText = "Passwords match";
+                    matchText.style.color = "green";
+                } else {
+                    matchText.innerText = "Passwords do not match";
+                    matchText.style.color = "red";
+                }
             });
 
             document.querySelector("form").addEventListener("submit", function(e) {
-            if (password.value.length < 8) {
-                e.preventDefault();
-                alert("Password must be at least 8 characters long!");
-                return;
-            }
-            if (confirmPass.value !== password.value) {
-                e.preventDefault();
-                alert("Passwords do not match!");
-                return;
-            }
+                if (password.value.length < 8) {
+                    e.preventDefault();
+                    alert("Password must be at least 8 characters long!");
+                    return;
+                }
+                if (confirmPass.value !== password.value) {
+                    e.preventDefault();
+                    alert("Passwords do not match!");
+                    return;
+                }
 
-            const btn = this.querySelector(".loading-btn");
-            btn.querySelector(".btn-text").classList.add("d-none");
-            btn.querySelector(".spinner-border").classList.remove("d-none");
-            btn.disabled = true;
+                const btn = this.querySelector(".loading-btn");
+                btn.querySelector(".btn-text").classList.add("d-none");
+                btn.querySelector(".spinner-border").classList.remove("d-none");
+                btn.disabled = true;
             });
         }
     </script>
-    
 </body>
 </html>

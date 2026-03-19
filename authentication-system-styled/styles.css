@@ -18,6 +18,11 @@ html,body{
 .card{
     transition:all 0.3s ease;
     border-radius: 15px;
+    overflow: hidden;
+}
+
+.object-fit-cover {
+    object-fit: cover;
 }
 
 .card:hover{
