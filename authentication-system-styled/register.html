@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center py-4">
+        <div class="row w-100 justify-content-center">
+            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+                <div class="card p-4 shadow-lg auth-card">
+                    <h3 class="text-center mb-3">Create Account</h3>
+                    <form action="index.html">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input class="form-control" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="Enter email address" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-control" placeholder="Enter phone number" required>
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="regPass" class="form-control password-field" placeholder="Enter password" required>
+                            <i class="bi bi-eye-slash toggle-password"></i>
+                            <div class="progress mt-2">
+                                <div id="strengthBar" class="progress-bar"></div>
+                            </div>
+                            <small id="strengthText"></small>
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPass" class="form-control password-field" placeholder="Re-enter password" required>
+                            <i class="bi bi-eye-slash toggle-password"></i>
+                            <small id="matchText"></small>
+                        </div>
+                        <br>
+                        <button class="btn btn-success w-100 loading-btn">
+                            <span class="btn-text">Create Account</span>
+                            <span class="spinner-border spinner-border-sm d-none"></span>
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-3 d-flex flex-column gap-2">
+                        <span class="text-muted">Already have an account?&nbsp;&nbsp;</span>
+                        <a href="index.html" class="auth-link">
+                            <i class="bi bi-box-arrow-in-left"></i> Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const toggles = document.querySelectorAll(".toggle-password");
+
+        toggles.forEach((toggle) => {
+            toggle.addEventListener("click", () => {
+                const input = toggle.previousElementSibling;
+                if (input.type === "password") {
+                    input.type = "text";
+                    toggle.classList.replace("bi-eye-slash", "bi-eye");
+                } else {
+                    input.type = "password";
+                    toggle.classList.replace("bi-eye", "bi-eye-slash");
+                }
+            });
+        });
+
+        const password = document.getElementById("regPass");
+
+        if (password) {
+            const bar = document.getElementById("strengthBar");
+            const text = document.getElementById("strengthText");
+
+            password.addEventListener("input", () => {
+                let value = password.value;
+
+                let hasUpper = /[A-Z]/.test(value);
+                let hasLower = /[a-z]/.test(value);
+                let hasNumber = /[0-9]/.test(value);
+                let hasSpecial = /[^A-Za-z0-9]/.test(value);
+
+                let strength = 0;
+
+                if (value.length >= 8) strength++;
+                if (hasUpper) strength++;
+                if (hasLower) strength++;
+                if (hasNumber) strength++;
+                if (hasSpecial) strength++;
+
+                if (strength <= 2) {
+                    bar.style.width = "33%";
+                    bar.className = "progress-bar bg-danger";
+                    text.innerText = "Weak password";
+                } else if (strength <= 4) {
+                    bar.style.width = "66%";
+                    bar.className = "progress-bar bg-warning";
+                    text.innerText = "Medium password";
+                } else {
+                    bar.style.width = "100%";
+                    bar.className = "progress-bar bg-success";
+                    text.innerText = "Strong password";
+                }
+            });
+        }
+
+        const confirmPass = document.getElementById("confirmPass");
+
+        if (confirmPass) {
+            const matchText = document.getElementById("matchText");
+
+            confirmPass.addEventListener("input", () => {
+            if (confirmPass.value === password.value) {
+                matchText.innerText = "Passwords match";
+                matchText.style.color = "green";
+            } else {
+                matchText.innerText = "Passwords do not match";
+                matchText.style.color = "red";
+            }
+            });
+
+            document.querySelector("form").addEventListener("submit", function(e) {
+            if (password.value.length < 8) {
+                e.preventDefault();
+                alert("Password must be at least 8 characters long!");
+                return;
+            }
+            if (confirmPass.value !== password.value) {
+                e.preventDefault();
+                alert("Passwords do not match!");
+                return;
+            }
+
+            const btn = this.querySelector(".loading-btn");
+            btn.querySelector(".btn-text").classList.add("d-none");
+            btn.querySelector(".spinner-border").classList.remove("d-none");
+            btn.disabled = true;
+            });
+        }
+    </script>
+    
+</body>
+</html>
