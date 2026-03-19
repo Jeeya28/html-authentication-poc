@@ -5,11 +5,6 @@ html,body{
     font-family:'Poppins',sans-serif;
 }
 
-body{
-    opacity:0;
-    animation:fadeIn 0.7s forwards;
-}
-
 .auth-link{
     transition: all 0.3s ease;
 }
@@ -22,6 +17,7 @@ body{
 
 .card{
     transition:all 0.3s ease;
+    border-radius: 15px;
 }
 
 .card:hover{
