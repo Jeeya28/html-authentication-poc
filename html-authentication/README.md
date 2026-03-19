@@ -1,4 +1,4 @@
-# 🔐 Authentication System (Bootstrap Project)
+# 🔐 Authentication System with Bootstrap 5
 
 ## 📌 Project Description
 This is a responsive authentication system built using HTML, Bootstrap 5, and custom CSS.  
@@ -42,13 +42,16 @@ It includes multiple pages for user authentication with modern UI design and int
 ![Register](screenshots/register.png)
 
 ### 🔐 Forgot Password
-![Forgot](screenshots/forgot.png)
+![Forgot](screenshots/forgot-password.png)
 
 ### 🔄 Reset Password
-![Reset](screenshots/reset.png)
+![Reset](screenshots/reset-password.png)
 
 ### 📊 Dashboard
 ![Dashboard](screenshots/dashboard.png)
+
+### 🌙 Dashboard (Dark Mode)
+![Dashboard Dark](screenshots/dashboard-dark.png)
 
 ---
 
